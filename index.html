@@ -57,23 +57,29 @@
         </label>
       </div>
       <div id="filters" role="group" aria-label="Filtrer par type" class="flex h-11 flex-nowrap gap-2 overflow-x-auto">
-        <button type="button" class="chip bg-ink text-white border-ink">All</button>
+        <!-- <button type="button" class="chip bg-ink text-white border-ink">All</button>
         <button type="button" class="chip">Grass</button>
         <button type="button" class="chip">Fire</button>
         <button type="button" class="chip">Water</button>
-        <button type="button" class="chip">Bug</button>
+        <button type="button" class="chip">Bug</button> -->
       </div>
     </section>
 
     <div class="flex flex-col gap-4 lg:flex-row">
 
       <!-- ===================== GRILLE DES CRÉATURES ===================== -->
-      <section id="grid" aria-label="Créatures"
-        class="grid grid-cols-1 min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-3 flex-1 lg:self-start">
+      <div class="flex flex-1 min-h-0 flex-col gap-4">
+        <section id="grid" aria-label="Créatures"
+          class="grid grid-cols-1 min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-3 flex-1 lg:self-start">
 
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-      </section>
+          <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
+        </section>
 
+        <button id="load-more" type="button" class="btn-primary self-center">
+          Charger plus
+        </button>
+
+      </div>
       <aside class="flex w-full shrink-0 flex-col gap-6 lg:w-[420px]">
 
         <!-- ===================== PANNEAU DE DÉTAIL ===================== -->
@@ -81,7 +87,8 @@
           class="flex flex-col gap-4 rounded-xl border-2 border-ink bg-white p-6">
           <div class="flex items-center justify-between">
             <span id="detail-number" class="font-mono text-sm text-muted">#003 · Détail</span>
-            <button id="close-detail" type="button" aria-label="Fermer le détail" class="btn-outline w-11 px-0">✕</button>
+            <button id="close-detail" type="button" aria-label="Fermer le détail"
+              class="btn-outline w-11 px-0">✕</button>
           </div>
           <div class="flex h-48 items-center justify-center rounded-2xl bg-brand-light">
             <img id="detail-image"
@@ -198,7 +205,8 @@
   <!-- data.js (à créer) doit être chargé AVANT script.js -->
   <!-- <script src="./data.js"></script>
   <script src="./script.js"></script> -->
-  <script src="./src/services/api.js" type="module"></script>
+  <!-- <script src="./src/services/api.js" type="module"></script> -->
+  <script type="module" src="./src/main.js"></script>
 
 </body>
 

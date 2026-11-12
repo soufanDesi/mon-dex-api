@@ -1,4 +1,3 @@
-console.log("API JS KHEDAM");
 // https://pokeapi.co/api/v2/pokemon/pikachu
 //  https://pokeapi.co/api/v2/pokemon?limit=20&offset=0
 
