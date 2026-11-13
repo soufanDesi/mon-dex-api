@@ -1,56 +1,59 @@
-# Mon Dex
+# Mon Dex connecté
 
-Sprint 2, Brief 1. Application Pokémon interactive développée avec HTML, Tailwind CSS et JavaScript.
+Application web permettant de découvrir des Pokémon à partir de la PokéAPI.
+
+## Fonctionnalités
+
+- Affichage des Pokémon récupérés depuis une API.
+- Chargement de 20 Pokémon supplémentaires avec la pagination.
+- Filtrage des Pokémon par type.
+- Recherche d'un Pokémon par nom.
+- Affichage des détails : image, description et statistiques.
+- Gestion des états de chargement, des erreurs et des boutons de réessai.
+- Ajout et suppression des Pokémon favoris.
+- Sauvegarde des favoris avec LocalStorage.
+
+## Technologies utilisées
+
+- HTML
+- Tailwind CSS
+- JavaScript (ES Modules)
+- Fetch API, async/await et Promise.all
+- LocalStorage
+
+## API utilisée
+
+[PokéAPI](https://pokeapi.co/)
+
+Principaux endpoints :
+
+- `/pokemon?limit=20&offset=0` : liste des Pokémon.
+- `/pokemon/{name}` : détails d'un Pokémon.
+- `/pokemon-species/{id}` : description d'un Pokémon.
+
+## Structure du projet
+
+- `index.html` : structure de l'application.
+- `src/main.js` : événements et logique principale.
+- `src/ui.js` : affichage des éléments.
+- `src/services/api.js` : requêtes vers la PokéAPI.
+- `src/storage.js` : gestion des favoris avec LocalStorage.
 
 ## Installation
 
-Prérequis : [Node.js](https://nodejs.org) (version 18 ou plus).
-
 ```bash
+git clone https://github.com/soufanDesi/mon-dex-api.git
+cd mon-dex-api
 npm install
 npm run dev
 ```
 
-`npm run dev` surveille vos fichiers et régénère `dist/output.css` à chaque modification. Ouvrez ensuite `index.html` dans votre navigateur (ou avec Live Server).
+Ouvrir ensuite `index.html` avec un serveur local.
 
-Avant de mettre en ligne sur GitHub Pages :
+## Auteur
 
-```bash
-npm run build
-```
+Soufiane
 
-Puis committez `dist/output.css` : GitHub Pages ne lance pas Tailwind pour vous.
+## Code source
 
-## Contenu du dépôt
-
-| Fichier | Rôle |
-|---|---|
-| `index.html` | Structure HTML de l'application |
-| `tailwind.config.js` | Configuration du thème |
-| `src/input.css` | Styles Tailwind |
-| `dist/output.css` | CSS généré par Tailwind |
-| `data.js` | Tableau `creatures` contenant les Pokémon |
-| `script.js` | Fonctionnalités JavaScript |
-| `design/` | Maquette de la version finale |
-
-## À compléter par vous
-
-- **Univers choisi :** Pokémon
-- **Lien GitHub Pages :** à ajouter après le déploiement
-- **Sources des images :** https://www.pokemon.com/
-- **Tests des expressions régulières :**
-
-| Champ | Valeurs valides | Valeurs invalides |
-|---|---|---|
-| Numéro | `#001`, `#125` | `001`, `#1234` |
-| Nom | `Pikachu`, `Bulbasaur` | `A`, `@Pokemon` |
-| Niveau | `Base`, `Stage 1` | `Niveau 1`, `Stage 3` |
-| Statistiques | `25`, `999` | `-5`, `1000` |
-| URL image | `https://example.com/pokemon.png`, `https://example.com/image.jpg` | `http://example.com/image.png`, `image.png` |
-| Description | `Pokemon de type feu`, `Pokemon de type eau` | `Court`, une chaîne de 201 caractères |
-
-- **Bonus réalisés :** Aucun
-
-## Sources des images
-
-Images des Pokémon : https://www.pokemon.com/
+https://github.com/soufanDesi/mon-dex-api

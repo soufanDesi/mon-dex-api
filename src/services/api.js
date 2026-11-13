@@ -70,7 +70,9 @@ export async function getPokemonByName(name) {
     const response = await fetch(`${BASE_URL}pokemon/${name}`)
 
     if (!response.ok) {
-        throw new Error(`Erreur ${response.status}`);
+        const error = new Error(`Erreur ${response.status}`);
+        error.status = response.status;
+        throw error;
     }
     const data = await response.json();
 
