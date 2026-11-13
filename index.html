@@ -48,13 +48,17 @@
   <main class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 lg:px-8">
 
     <!-- ===================== RECHERCHE ET FILTRES ===================== -->
-    <section aria-label="Recherche et filtres" class="flex flex-col gap-4">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <h1 class="font-display text-4xl font-extrabold">Trouver une créature</h1>
+    <section aria-label="Recherche et filtres" class="flex flex-col gap-6">
+      <div class="flex flex-wrap items-end justify-end gap-4">
+        <h1 class="mr-auto font-display text-4xl font-extrabold">Trouver une créature</h1>
         <label class="flex w-full max-w-md flex-col gap-1 text-sm font-bold">
           Rechercher par nom
           <input id="search" type="search" placeholder="ex. Bulbasaur" class="field font-normal">
         </label>
+        <div>
+          <button id="search-btn" type="button" class="btn-primary">Rechercher</button>
+          <button id="clear-search" type="button" class="btn-outline">Effacer</button>
+        </div>
       </div>
       <div id="filters" role="group" aria-label="Filtrer par type" class="flex h-11 flex-nowrap gap-2 overflow-x-auto">
         <!-- <button type="button" class="chip bg-ink text-white border-ink">All</button>

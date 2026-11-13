@@ -1,5 +1,5 @@
-import { afficherPokemon, afficherTypes, activerType} from "./ui.js"
-import { getPokemons } from "./services/api.js"
+import { afficherPokemon, afficherTypes, activerType, afficherErreurRecherche, afficherDetail } from "./ui.js"
+import { getPokemons, getPokemonByName, getPokemonDescription } from "./services/api.js"
 
 let offset = 0;
 const nouveaux = [];
@@ -58,3 +58,57 @@ filters.addEventListener("click", function (event) {
     filtrerPokemon();
     activerType(typeActif);
 })
+
+const searchInput = document.querySelector("#search");
+const searchBtn = document.querySelector("#search-btn");
+const clearSearch = document.querySelector("#clear-search");
+
+
+searchBtn.addEventListener("click", async function () {
+
+    const name = searchInput.value.trim();
+
+    if (name === "") return;
+
+    searchBtn.disabled = true;
+    try {
+        const pokemon = await getPokemonByName(name);
+        afficherPokemon([pokemon]);
+    } catch (error) {
+        afficherErreurRecherche();
+    } finally {
+        searchBtn.disabled = false;
+    }
+
+})
+
+
+clearSearch.addEventListener("click", function () {
+    searchInput.value = "";
+
+    filtrerPokemon();
+})
+
+const grid = document.querySelector("#grid");
+
+// detail
+grid.addEventListener("click", async function (event) {
+    const card = event.target.closest("article")
+
+    if (!card) return;
+
+    const id = card.dataset.id
+    const pokemonId = Number(id.replace("#", ""));
+
+    const pokemon = await getPokemonByName(pokemonId);
+    pokemon.description = await getPokemonDescription(pokemonId);
+    afficherDetail(pokemon);
+})
+
+const detail = document.querySelector("#detail");
+const closeDetail = document.querySelector("#close-detail");
+
+closeDetail.addEventListener("click", function () {
+    detail.classList.add("hidden");
+    detail.classList.remove("flex");
+});

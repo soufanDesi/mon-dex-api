@@ -1,3 +1,5 @@
+
+
 const grid = document.querySelector("#grid")
 // const filters = document.querySelector("#filters");
 // let typeActif = "All";
@@ -33,6 +35,61 @@ export function afficherPokemon(liste) {
     );
 }
 
+export function afficherErreurRecherche() {
+    grid.innerHTML = "";
+    const message = document.createElement("p");
+    message.textContent = "Aucun Pokémon trouvé";
+
+    grid.appendChild(message);
+}
+
+export function afficherDetail(pokemon) {
+
+    const detail = document.querySelector("#detail");
+
+    detail.classList.remove("hidden");
+    detail.classList.add("flex");
+
+    // id
+    const detailNumber = document.querySelector("#detail-number");
+    detailNumber.textContent = `${pokemon.id} · Détail`;
+
+    // name
+    const detailName = document.querySelector("#detail-name");
+    detailName.textContent = pokemon.name;
+
+    // image
+    const detailImage = document.querySelector("#detail-image");
+    detailImage.src = pokemon.image;
+    detailImage.alt = pokemon.name;
+
+    // description
+    const detaildesc = document.querySelector("#detail-description");
+    detaildesc.textContent = pokemon.description
+
+    // type
+    const detailType = document.querySelector("#detail-type");
+    detailType.textContent = pokemon.type;
+
+    const detailHp = document.querySelector("#detail-hp");
+    detailHp.textContent = pokemon.stats.hp;
+    const hpBar = document.querySelector("#detail-hp-bar");
+    hpBar.style.width = pokemon.stats.hp + "%";
+
+    const detailAttq = document.querySelector("#detail-attack");
+    detailAttq.textContent = pokemon.stats.attack;
+    const attackBar = document.querySelector("#detail-attack-bar");
+    attackBar.style.width = pokemon.stats.attack + "%";
+
+    const detaildefence = document.querySelector("#detail-defence");
+    detaildefence.textContent = pokemon.stats.defence;
+    const defenceBar = document.querySelector("#detail-defence-bar");
+    defenceBar.style.width = pokemon.stats.defence + "%";
+
+}
+
+
+
 
 export function afficherTypes(type) {
     const filters = document.querySelector("#filters");
@@ -64,8 +121,8 @@ export function activerType(typeActif) {
     buttons.forEach(function (button) {
         button.classList.remove("bg-ink", "text-white", "border-ink");
 
-        if(button.textContent === typeActif){
-             button.classList.add("bg-ink", "text-white", "border-ink");
+        if (button.textContent === typeActif) {
+            button.classList.add("bg-ink", "text-white", "border-ink");
         }
     })
 
