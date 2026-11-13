@@ -48,32 +48,42 @@
   <main class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 lg:px-8">
 
     <!-- ===================== RECHERCHE ET FILTRES ===================== -->
-    <section aria-label="Recherche et filtres" class="flex flex-col gap-4">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <h1 class="font-display text-4xl font-extrabold">Trouver une créature</h1>
+    <section aria-label="Recherche et filtres" class="flex flex-col gap-6">
+      <div class="flex flex-wrap items-end justify-end gap-4">
+        <h1 class="mr-auto font-display text-4xl font-extrabold">Trouver une créature</h1>
         <label class="flex w-full max-w-md flex-col gap-1 text-sm font-bold">
           Rechercher par nom
           <input id="search" type="search" placeholder="ex. Bulbasaur" class="field font-normal">
         </label>
+        <div>
+          <button id="search-btn" type="button" class="btn-primary">Rechercher</button>
+          <button id="clear-search" type="button" class="btn-outline">Effacer</button>
+        </div>
       </div>
       <div id="filters" role="group" aria-label="Filtrer par type" class="flex h-11 flex-nowrap gap-2 overflow-x-auto">
-        <button type="button" class="chip bg-ink text-white border-ink">All</button>
+        <!-- <button type="button" class="chip bg-ink text-white border-ink">All</button>
         <button type="button" class="chip">Grass</button>
         <button type="button" class="chip">Fire</button>
         <button type="button" class="chip">Water</button>
-        <button type="button" class="chip">Bug</button>
+        <button type="button" class="chip">Bug</button> -->
       </div>
     </section>
 
     <div class="flex flex-col gap-4 lg:flex-row">
 
       <!-- ===================== GRILLE DES CRÉATURES ===================== -->
-      <section id="grid" aria-label="Créatures"
-        class="grid grid-cols-1 min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-3 flex-1 lg:self-start">
+      <div class="flex flex-1 min-h-0 flex-col gap-4">
+        <section id="grid" aria-label="Créatures"
+          class="grid grid-cols-1 min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-3 flex-1 lg:self-start">
 
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-      </section>
+          <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
+        </section>
 
+        <button id="load-more" type="button" class="btn-primary self-center">
+          Charger plus
+        </button>
+
+      </div>
       <aside class="flex w-full shrink-0 flex-col gap-6 lg:w-[420px]">
 
         <!-- ===================== PANNEAU DE DÉTAIL ===================== -->
@@ -81,7 +91,8 @@
           class="flex flex-col gap-4 rounded-xl border-2 border-ink bg-white p-6">
           <div class="flex items-center justify-between">
             <span id="detail-number" class="font-mono text-sm text-muted">#003 · Détail</span>
-            <button id="close-detail" type="button" aria-label="Fermer le détail" class="btn-outline w-11 px-0">✕</button>
+            <button id="close-detail" type="button" aria-label="Fermer le détail"
+              class="btn-outline w-11 px-0">✕</button>
           </div>
           <div class="flex h-48 items-center justify-center rounded-2xl bg-brand-light">
             <img id="detail-image"
@@ -196,8 +207,11 @@
   </footer>
 
   <!-- data.js (à créer) doit être chargé AVANT script.js -->
-  <script src="./data.js"></script>
-  <script src="./script.js"></script>
+  <!-- <script src="./data.js"></script>
+  <script src="./script.js"></script> -->
+  <!-- <script src="./src/services/api.js" type="module"></script> -->
+  <script type="module" src="./src/main.js"></script>
+
 </body>
 
 </html>
