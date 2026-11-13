@@ -1,5 +1,7 @@
 // https://pokeapi.co/api/v2/pokemon/pikachu
 //  https://pokeapi.co/api/v2/pokemon?limit=20&offset=0
+// https://pokeapi.co/api/v2/pokemon-species/25
+
 
 const BASE_URL = "https://pokeapi.co/api/v2/";
 
@@ -39,7 +41,7 @@ export async function getPokemons(offset = 0) {
     }
 
     const data = await response.json();
-    
+
     const requests = data.results.map(function (pokemon) {
         return fetch(pokemon.url);
     })
@@ -63,3 +65,33 @@ export async function getPokemons(offset = 0) {
 }
 
 
+export async function getPokemonByName(name) {
+
+    const response = await fetch(`${BASE_URL}pokemon/${name}`)
+
+    if (!response.ok) {
+        throw new Error(`Erreur ${response.status}`);
+    }
+    const data = await response.json();
+
+    return toCreature(data);
+}
+
+
+export async function getPokemonDescription(id) {
+    const response = await fetch(`${BASE_URL}pokemon-species/${id}`)
+
+    if (!response.ok) {
+        throw new Error(`Erreur ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const descriptionFr = data.flavor_text_entries.find(function (item) {
+        return item.language.name === "fr";
+    });
+
+    if (!descriptionFr) return "Description indisponible";
+
+    return descriptionFr.flavor_text;
+}
